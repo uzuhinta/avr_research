@@ -1,0 +1,198 @@
+
+ServoController.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000ee  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  00000142  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  00000142  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000174  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000030  00000000  00000000  000001b0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   0000054b  00000000  00000000  000001e0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000004bc  00000000  00000000  0000072b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000023c  00000000  00000000  00000be7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  0000007c  00000000  00000000  00000e24  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000002d5  00000000  00000000  00000ea0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000000ac  00000000  00000000  00001175  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000020  00000000  00000000  00001221  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	37 c0       	rjmp	.+110    	; 0x72 <__vector_1>
+   4:	54 c0       	rjmp	.+168    	; 0xae <__vector_2>
+   6:	17 c0       	rjmp	.+46     	; 0x36 <__bad_interrupt>
+   8:	16 c0       	rjmp	.+44     	; 0x36 <__bad_interrupt>
+   a:	15 c0       	rjmp	.+42     	; 0x36 <__bad_interrupt>
+   c:	14 c0       	rjmp	.+40     	; 0x36 <__bad_interrupt>
+   e:	13 c0       	rjmp	.+38     	; 0x36 <__bad_interrupt>
+  10:	12 c0       	rjmp	.+36     	; 0x36 <__bad_interrupt>
+  12:	11 c0       	rjmp	.+34     	; 0x36 <__bad_interrupt>
+  14:	10 c0       	rjmp	.+32     	; 0x36 <__bad_interrupt>
+  16:	0f c0       	rjmp	.+30     	; 0x36 <__bad_interrupt>
+  18:	0e c0       	rjmp	.+28     	; 0x36 <__bad_interrupt>
+  1a:	0d c0       	rjmp	.+26     	; 0x36 <__bad_interrupt>
+  1c:	0c c0       	rjmp	.+24     	; 0x36 <__bad_interrupt>
+  1e:	0b c0       	rjmp	.+22     	; 0x36 <__bad_interrupt>
+  20:	0a c0       	rjmp	.+20     	; 0x36 <__bad_interrupt>
+  22:	09 c0       	rjmp	.+18     	; 0x36 <__bad_interrupt>
+  24:	08 c0       	rjmp	.+16     	; 0x36 <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+  32:	02 d0       	rcall	.+4      	; 0x38 <main>
+  34:	5a c0       	rjmp	.+180    	; 0xea <_exit>
+
+00000036 <__bad_interrupt>:
+  36:	e4 cf       	rjmp	.-56     	; 0x0 <__vectors>
+
+00000038 <main>:
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
+int main(void)
+{
+	DDRB = 0xFF;
+  38:	8f ef       	ldi	r24, 0xFF	; 255
+  3a:	87 bb       	out	0x17, r24	; 23
+	PORTB = 0x00;
+  3c:	18 ba       	out	0x18, r1	; 24
+	
+	MCUCR |= (1<<ISC11)|(1<<ISC01);
+  3e:	85 b7       	in	r24, 0x35	; 53
+  40:	8a 60       	ori	r24, 0x0A	; 10
+  42:	85 bf       	out	0x35, r24	; 53
+	GICR |= (1<<INT1)|(1<<INT0);
+  44:	8b b7       	in	r24, 0x3b	; 59
+  46:	80 6c       	ori	r24, 0xC0	; 192
+  48:	8b bf       	out	0x3b, r24	; 59
+	
+	TCCR1A |= (1<<COM1A1)|(1<<COM1B1)|(1<<WGM11);
+  4a:	8f b5       	in	r24, 0x2f	; 47
+  4c:	82 6a       	ori	r24, 0xA2	; 162
+  4e:	8f bd       	out	0x2f, r24	; 47
+	TCCR1B |= (1<<WGM13)|(1<<WGM12)|(1<<CS10);
+  50:	8e b5       	in	r24, 0x2e	; 46
+  52:	89 61       	ori	r24, 0x19	; 25
+  54:	8e bd       	out	0x2e, r24	; 46
+	OCR1A =  1000;
+  56:	88 ee       	ldi	r24, 0xE8	; 232
+  58:	93 e0       	ldi	r25, 0x03	; 3
+  5a:	9b bd       	out	0x2b, r25	; 43
+  5c:	8a bd       	out	0x2a, r24	; 42
+	OCR1B = 1500;
+  5e:	8c ed       	ldi	r24, 0xDC	; 220
+  60:	95 e0       	ldi	r25, 0x05	; 5
+  62:	99 bd       	out	0x29, r25	; 41
+  64:	88 bd       	out	0x28, r24	; 40
+	ICR1 = 20000;
+  66:	80 e2       	ldi	r24, 0x20	; 32
+  68:	9e e4       	ldi	r25, 0x4E	; 78
+  6a:	97 bd       	out	0x27, r25	; 39
+  6c:	86 bd       	out	0x26, r24	; 38
+	
+	sei();
+  6e:	78 94       	sei
+  70:	ff cf       	rjmp	.-2      	; 0x70 <__SREG__+0x31>
+
+00000072 <__vector_1>:
+	{
+	}
+	
+}
+
+ISR(INT0_vect){
+  72:	1f 92       	push	r1
+  74:	0f 92       	push	r0
+  76:	0f b6       	in	r0, 0x3f	; 63
+  78:	0f 92       	push	r0
+  7a:	11 24       	eor	r1, r1
+  7c:	2f 93       	push	r18
+  7e:	8f 93       	push	r24
+  80:	9f 93       	push	r25
+	if(OCR1A == 1000) OCR1A = 1500;
+  82:	8a b5       	in	r24, 0x2a	; 42
+  84:	9b b5       	in	r25, 0x2b	; 43
+  86:	88 3e       	cpi	r24, 0xE8	; 232
+  88:	93 40       	sbci	r25, 0x03	; 3
+  8a:	29 f4       	brne	.+10     	; 0x96 <__vector_1+0x24>
+  8c:	8c ed       	ldi	r24, 0xDC	; 220
+  8e:	95 e0       	ldi	r25, 0x05	; 5
+  90:	9b bd       	out	0x2b, r25	; 43
+  92:	8a bd       	out	0x2a, r24	; 42
+  94:	04 c0       	rjmp	.+8      	; 0x9e <__vector_1+0x2c>
+	else OCR1A = 1000;
+  96:	88 ee       	ldi	r24, 0xE8	; 232
+  98:	93 e0       	ldi	r25, 0x03	; 3
+  9a:	9b bd       	out	0x2b, r25	; 43
+  9c:	8a bd       	out	0x2a, r24	; 42
+}
+  9e:	9f 91       	pop	r25
+  a0:	8f 91       	pop	r24
+  a2:	2f 91       	pop	r18
+  a4:	0f 90       	pop	r0
+  a6:	0f be       	out	0x3f, r0	; 63
+  a8:	0f 90       	pop	r0
+  aa:	1f 90       	pop	r1
+  ac:	18 95       	reti
+
+000000ae <__vector_2>:
+
+ISR(INT1_vect){
+  ae:	1f 92       	push	r1
+  b0:	0f 92       	push	r0
+  b2:	0f b6       	in	r0, 0x3f	; 63
+  b4:	0f 92       	push	r0
+  b6:	11 24       	eor	r1, r1
+  b8:	2f 93       	push	r18
+  ba:	8f 93       	push	r24
+  bc:	9f 93       	push	r25
+	if(OCR1B == 1500) OCR1B = 2000;
+  be:	88 b5       	in	r24, 0x28	; 40
+  c0:	99 b5       	in	r25, 0x29	; 41
+  c2:	8c 3d       	cpi	r24, 0xDC	; 220
+  c4:	95 40       	sbci	r25, 0x05	; 5
+  c6:	29 f4       	brne	.+10     	; 0xd2 <__vector_2+0x24>
+  c8:	80 ed       	ldi	r24, 0xD0	; 208
+  ca:	97 e0       	ldi	r25, 0x07	; 7
+  cc:	99 bd       	out	0x29, r25	; 41
+  ce:	88 bd       	out	0x28, r24	; 40
+  d0:	04 c0       	rjmp	.+8      	; 0xda <__vector_2+0x2c>
+	else OCR1B = 1500;
+  d2:	8c ed       	ldi	r24, 0xDC	; 220
+  d4:	95 e0       	ldi	r25, 0x05	; 5
+  d6:	99 bd       	out	0x29, r25	; 41
+  d8:	88 bd       	out	0x28, r24	; 40
+}
+  da:	9f 91       	pop	r25
+  dc:	8f 91       	pop	r24
+  de:	2f 91       	pop	r18
+  e0:	0f 90       	pop	r0
+  e2:	0f be       	out	0x3f, r0	; 63
+  e4:	0f 90       	pop	r0
+  e6:	1f 90       	pop	r1
+  e8:	18 95       	reti
+
+000000ea <_exit>:
+  ea:	f8 94       	cli
+
+000000ec <__stop_program>:
+  ec:	ff cf       	rjmp	.-2      	; 0xec <__stop_program>

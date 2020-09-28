@@ -1,0 +1,35 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.7</VERSION>
+ <DEVICE>"ATmega8"</DEVICE>
+ <WORKING_DIR>E:\Embedded\program\ASM\CHAP_2\Chap_2\Chap_2\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>E:\Embedded\program\ASM\CHAP_2\Chap_2\Chap_2\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m8def.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\M8DEF.INC</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>E:\Embedded\program\ASM\CHAP_2\Chap_2\Chap_2\Debug\Chap_2.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Chap_2.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Chap_2.map</FILE>
+  <FILE>Chap_2.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <BATDAU><FILE>E:\Embedded\program\ASM\CHAP_2\Chap_2\Chap_2\main.asm</FILE><LINE>6</LINE></BATDAU>
+  <MAIN><FILE>E:\Embedded\program\ASM\CHAP_2\Chap_2\Chap_2\main.asm</FILE><LINE>19</LINE></MAIN>
+  <SOSANH><FILE>E:\Embedded\program\ASM\CHAP_2\Chap_2\Chap_2\main.asm</FILE><LINE>31</LINE></SOSANH>
+  <TANG><FILE>E:\Embedded\program\ASM\CHAP_2\Chap_2\Chap_2\main.asm</FILE><LINE>46</LINE></TANG>
+  <GIAM><FILE>E:\Embedded\program\ASM\CHAP_2\Chap_2\Chap_2\main.asm</FILE><LINE>52</LINE></GIAM>
+  <RESET0><FILE>E:\Embedded\program\ASM\CHAP_2\Chap_2\Chap_2\main.asm</FILE><LINE>37</LINE></RESET0>
+  <RESET9><FILE>E:\Embedded\program\ASM\CHAP_2\Chap_2\Chap_2\main.asm</FILE><LINE>40</LINE></RESET9>
+  <QUAYVE><FILE>E:\Embedded\program\ASM\CHAP_2\Chap_2\Chap_2\main.asm</FILE><LINE>42</LINE></QUAYVE>
+ </LABELS>
+</ASSEMBLER_INFO>
