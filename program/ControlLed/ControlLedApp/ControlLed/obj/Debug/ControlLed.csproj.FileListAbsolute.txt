@@ -1,0 +1,10 @@
+E:\Embedded\ControlLed\ControlLedApp\ControlLed\bin\Debug\ControlLed.exe.config
+E:\Embedded\ControlLed\ControlLedApp\ControlLed\bin\Debug\ControlLed.exe
+E:\Embedded\ControlLed\ControlLedApp\ControlLed\bin\Debug\ControlLed.pdb
+E:\Embedded\ControlLed\ControlLedApp\ControlLed\obj\Debug\ControlLed.csprojAssemblyReference.cache
+E:\Embedded\ControlLed\ControlLedApp\ControlLed\obj\Debug\ControlLed.Form1.resources
+E:\Embedded\ControlLed\ControlLedApp\ControlLed\obj\Debug\ControlLed.Properties.Resources.resources
+E:\Embedded\ControlLed\ControlLedApp\ControlLed\obj\Debug\ControlLed.csproj.GenerateResource.cache
+E:\Embedded\ControlLed\ControlLedApp\ControlLed\obj\Debug\ControlLed.csproj.CoreCompileInputs.cache
+E:\Embedded\ControlLed\ControlLedApp\ControlLed\obj\Debug\ControlLed.exe
+E:\Embedded\ControlLed\ControlLedApp\ControlLed\obj\Debug\ControlLed.pdb
